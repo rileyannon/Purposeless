@@ -1,11 +1,14 @@
 ﻿namespace Purposeless
 {
-    public static class Compiler
+    public class Compiler
     {
+        Stack<int> leftParTokens = new Stack<int>();
+        Queue<int> rightParTokens = new Queue<int>();
+
         public static bool Run(string fileName)
         { //if file is valid = true; otherwise, false
 
-            if (!File.Exists(fileName)) return false;
+            if (!File.Exists(fileName)) return false;   //can't find file so we stop the program
 
             List<Token> tokens = Parser.Tokenize(File.ReadAllText(fileName));
 
@@ -15,6 +18,14 @@
             }
 
             return true; //if file can be run
+        }
+
+        public static void ParseBody(List<Token> tokens, int index)
+        {
+            while (true)
+            {
+
+            }
         }
     }
 }

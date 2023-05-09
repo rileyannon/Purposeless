@@ -5,7 +5,8 @@ Console.WriteLine("Welcome to the Purposeless (not trademarked) Programming Lang
 
 string input = "";
 
-while (input.ToLower() != "q") {
+while (input.ToLower() != "q")
+{
     input = Console.ReadLine();
-    Compiler.Run("C:\\Users\\annon\\Desktop\\TestProgram.txt");
+    Compiler.Run("C:\\Users\\annon\\Documents\\Visual Studio 2022\\TestProgram.txt");
 }

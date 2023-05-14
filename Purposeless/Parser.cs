@@ -7,9 +7,13 @@
         {
             List<Token> tokens = new List<Token>();
 
-            string currToken = "";
-            foreach (char c in input)
+            string currToken = "";  //to keep track of current token
+            int index = 0;          //keep track of current index
+
+            while(index < input.Length)
             {
+                char c = input[index];
+
                 if (c == ' ' || c == '\n' || c == '\t')
                 {
                     //CASE 1: It's a space so we skip it (and add the next token if possible)
@@ -18,6 +22,28 @@
                         tokens.Add(new Token(currToken));
                     }
 
+                    currToken = "";
+                }
+                else if (c == '\"') {
+                    //CASE 2: string/char literal
+                    bool stopSearch = true;
+                    index++;
+
+                    while (stopSearch) {
+
+                        if (input[index] == '\"' && input[index - 1] != '\\')
+                        {
+                            stopSearch = false;
+                            index++;
+                        }
+                        else { 
+                            currToken += input[index];
+                        }
+
+                        index++;
+                    }
+
+                    tokens.Add(new Token(currToken));
                     currToken = "";
                 }
                 else if (delimiters.Contains(c))
@@ -36,6 +62,8 @@
                     //CASE 3: Keep parsing bbg
                     currToken += c;
                 }
+
+                index++;
             }
 
             return tokens;

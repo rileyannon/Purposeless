@@ -43,7 +43,7 @@
                         index++;
                     }
 
-                    tokens.Add(new Token(currToken));
+                    tokens.Add(new Token(currToken, TokenType.STRING_LITERAL));
                     currToken = "";
                 }
                 else if (delimiters.Contains(c))
@@ -54,7 +54,7 @@
                         tokens.Add(new Token(currToken));
                     }
 
-                    tokens.Add(new Token(c.ToString()));
+                    tokens.Add(new Token(c.ToString(), TokenType.OPERATOR));
                     currToken = "";
                 }
                 else

@@ -14,18 +14,12 @@
 
             for (int index = 0; index < tokens.Count; index++)
             {
-                Console.WriteLine(tokens[index].String);
+                //Console.WriteLine(tokens[index].String);
             }
+
+            Parser.Parse(tokens);
 
             return true; //if file can be run
-        }
-
-        public static void ParseBody(List<Token> tokens, int index)
-        {
-            while (true)
-            {
-
-            }
         }
     }
 }
